@@ -7,10 +7,15 @@ import kodlamaio.HrmsDemo.core.utilities.results.Result;
 import kodlamaio.HrmsDemo.entities.concretes.JobAdvertisement;
 
 public interface JobAdvertisementService {
-
 	DataResult<List<JobAdvertisement>> getAll();
-	DataResult<List<JobAdvertisement>> getAllSortedByActive();
-	DataResult<List<JobAdvertisement>> getAllSortedByDate();
-	Result add(JobAdvertisement advertisement);
-	Result update(JobAdvertisement advertisement);
+
+	Result add(JobAdvertisement jobAdvertisement);
+
+	DataResult<List<JobAdvertisement>> findAllByIsActive();
+
+	DataResult<List<JobAdvertisement>> findAllByIsActiveSorted();
+
+	DataResult<List<JobAdvertisement>> findAllByIsActiveAndCompanyName(int id);
+
+	DataResult<JobAdvertisement> setJobAdvertisementDisabled(int id);
 }

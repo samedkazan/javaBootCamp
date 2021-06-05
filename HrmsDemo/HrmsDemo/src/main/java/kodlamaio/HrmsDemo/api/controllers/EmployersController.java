@@ -16,37 +16,22 @@ import kodlamaio.HrmsDemo.entities.concretes.Employer;
 @RestController
 @RequestMapping("/api/employers")
 public class EmployersController {
-	
-	private EmployerService employerService;
-    
 	@Autowired
+	private EmployerService employerService;
+
 	public EmployersController(EmployerService employerService) {
 		super();
 		this.employerService = employerService;
 	}
-	
+
 	@GetMapping("/getall")
-	public DataResult<List<Employer>> getAll(){
+	public DataResult<List<Employer>> getAll() {
 		return this.employerService.getAll();
 	}
-	
-//	@GetMapping("/get/{id}")
-//	public Employer get( @PathVariable("id") int id){
-//		return this.employerService.get(id);
-//	}
+
 	@PostMapping("/add")
-	public void add(@RequestBody Employer employer) {
-		this.employerService.add(employer);
+	public DataResult<Employer> add(@RequestBody Employer employer) {
+		return this.employerService.add(employer);
 	}
-//	@PostMapping("/update")
-//	public void update(@RequestBody Employer employer) {
-//		this.employerService.update(employer);
-//	}
-//	@PostMapping("/delete")
-//	public void delete(@RequestBody Employer employer) {
-//		this.employerService.delete(employer);
-//	}
-	
-	
 
 }
